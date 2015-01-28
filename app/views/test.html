@@ -1,0 +1,94 @@
+<br />
+<div class="row">
+    <div class=" col-xs-offset-1 col-xs-4">
+        <div class="row">
+            <h1 class="col-xs-9">
+                    {{list_title}}
+                    <a class="btn btn-success btn-fab  btn-add btn-xs mdi-content-add" href="javascript:void(0)" ng-click='set_current_wdw_to_add()'>
+                <div class="ripple-wrapper"></div>
+            </a>
+            </h1>
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-10">
+                <div class="form-control-wrapper">
+                    <input type="text" class="form-control empty" ng-model="filters" ng-change="search()" />
+                    <div class="floating-label">Search</div>
+                <span class="material-input"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row" ng-repeat='item in items'>
+            <div class="col-xs-offset-1 col-xs-10">
+                <button ng-click="update_current_item(item)" ng-class="item._id.$oid == current_item._id.$oid? 'btn btn-primary' : 'btn'" class="btn-raised col-xs-12 col-xs-offset-1">
+                    <div data-block="content"></div>
+                </button>
+            </div>
+        </div ng-repeat-end>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-10" ng-hide="items.length">
+                {{empty_list_msg}}
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-xs-offset-1 col-xs-10">
+                    <ul class="pager">
+                        <li class="previous {{previous_state}}">
+                            <a href="javascript:void(0)" ng-click='previous_page()'>← Older</a>
+                        </li>
+                        <li class="next {{next_state}}">
+                        <a href="javascript:void(0)" ng-click="next_page()">Next →</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+    <div ng-show="current_wdw =='view'" class=" col-xs-offset-1 col-xs-4">
+        <h1>
+                {{detail_title}}
+        </h1>
+        <div class="row">
+            <div class=" col-xs-12 panel detail panel-primary form-control-wrapper">
+                <div class="panel-heading navbar">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="current_tab == 'profile'? 'active' :'noactive'">
+                            <a data-toggle="tab" href="javascript:void(0)"
+                            ng-click="set_current_tab_to_profile()">
+                                Profile
+                                <div class="ripple-wrapper"></div>
+                            </a>
+                        </li>
+                        <li ng-class="current_tab == 'edit'? 'active' :'noactive'">
+                            <a data-toggle="tab" href="javascript:void(0)" ng-click="set_current_tab_to_edit()">
+                                Edit
+                                <div class="ripple-wrapper"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <form name="form" ng-submit="update_item()">
+                        <div ng-include src="'views/edit_item.html'"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="current_wdw =='add'" class=" col-xs-offset-1 col-xs-4">
+            <h1>
+                {{add_title}}
+            </h1>
+        <div class="row">
+            <div class=" col-xs-12 panel detail panel-primary form-control-wrapper">
+                 <div class="panel-heading navbar">
+                </div>
+                <div class="panel-body">
+                    <form name="form" ng-submit="add_item()">
+                        <div ng-include src="'views/edit_item.html'"></div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>

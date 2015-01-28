@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-xs-offset-2 col-xs-10">
+    <div class="jumbotron col-xs-8">
+      <h2>{{title}}</h2>
+      <br />
+        <form method="POST" ng-submit="login()">
+          <div class="input">
+          <div class="form-control-wrapper">
+            <input type="text" class="form-control empty" name="username" ng-model="username" />
+            <div class="floating-label">Username</div>
+            <span class="material-input"></span>
+          </div>
+          <div class="form-control-wrapper">
+            <input type="password" class="form-control empty" name="password" ng-model="password"/>
+            <div class="floating-label">Password</div>
+            <span class="material-input"></span>
+          </div>
+            <input class="btn btn-primary" type="submit" value="login" />
+        </div>
+        </form>
+        
+      </div>
+      <br />
+      <div class="col-xs-8">
+        <div ng-show="errors.msg.length > 0" class="alert alert-danger">
+            <b>{{errors.title}}:</b> {{errors.msg}}
+        </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,18 @@
+
+<div class="modal-header">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 ">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="dt" is-open="opened" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+  <highchart id="chart1" config="chartConfig" class="span10"></highchart>
+</div>
+<div class="modal-footer">
+</div>

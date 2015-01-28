@@ -1,0 +1,29 @@
+<table  style="width: 250px">
+    <tr ng-repeat="field in fields" ng-if="(current_tab =='profile' && current_wdw != 'add') || (current_tab =='edit' && field.edit.display) || (current_wdw == 'add' && field.edit.display)">
+        <td >
+            <b> {{field.label}} </b>
+        </td>
+        <td>
+            <span ng-show="current_tab == 'profile' && current_wdw != 'add'">
+                {{get_edit_model()[field.key]}}
+                <span dynamic="field.extend_value"></span>
+            </span> 
+            <div  ng-show="current_tab == 'edit' || current_wdw == 'add'">
+                <div class="form-control-wrapper">
+                        <input type="{{field.type}}" class="form-control" ng-model="get_edit_model()[field.key]"
+                        ng-required='{{field.edit.required}}' name='{{field.key}}'/>
+                    <span  ng-class="form[field.key].$error.required? 'error' : ' '"class="material-input"></span>
+                    </div>
+
+            </div>
+        </td>
+    </tr>
+    <tr ng-show="current_tab == 'edit' ||(current_wdw == 'add')">
+            <td colspan=2 class="td-center">
+                 <input type="submit" class="btn btn-xs btn-primary" 
+                 value="Save"
+                 />
+                 <a ng-click="open_graph()"></a>
+            </td>
+        </tr>
+</table>

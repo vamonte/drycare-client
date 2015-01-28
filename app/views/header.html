@@ -1,0 +1,59 @@
+<div class="navbar navbar-primary">
+  <div class="navbar-header">
+    <button class="navbar-toggle" data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="javascript:void(0)">
+      {{title}}
+      <div class="ripple-wrapper"></div>
+    </a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul ng-show="user.username" class="nav navbar-nav">
+      <li class="active">
+          <a data-toggle="tab" href="#/alerts" data-target="#alerts">
+              Alerts
+              <div class="ripple-wrapper"></div>
+          </a>
+      </li>
+      <li>
+          <a data-toggle="tab" href="#/patients" data-target="#patients">
+              Patients
+              <div class="ripple-wrapper"></div>
+          </a>
+      </li>
+      <li>
+          <a data-toggle="tab" href="#/devices" data-target="#devices">
+              Devices
+              <div class="ripple-wrapper"></div>
+          </a>
+      </li>
+  </ul>
+    <ul ng-show="user.username" class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" aria-expanded="false">
+          {{user.username}}
+          <b class="caret"></b>
+          <div class="ripple-wrapper"></div>
+        </a>
+       <ul class="dropdown-menu">
+        <li>
+            <a href="javascript:void(0)"
+                ng-click="logout()">
+              Logout
+              <div class="ripple-wrapper"></div>
+            </a>
+        </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+    
+</div>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
